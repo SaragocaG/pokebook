@@ -1,5 +1,13 @@
 # Getting Started with Create React App
 
+## Built using
+  - Typescript
+  - REST API'integration
+  - Redux
+  - SCSS
+  - Recharts
+  - React Virtualized
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
