@@ -20,6 +20,7 @@ const PokemonList = () => {
   const dispatch = useDispatch();
   const pokemons: PokemonListProps = useSelector((state: any) => state.pokemons);
   const [isLoading, setIsLoading] = useState(false);
+
   const listHeight = 400;
 
   const rowRenderer = ({ index , style }: { index: number, style: any }) => {
@@ -72,7 +73,7 @@ const PokemonList = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ overflowX: 'auto' }}>
       {
         pokemons.list.length > 0 && (
           <List
