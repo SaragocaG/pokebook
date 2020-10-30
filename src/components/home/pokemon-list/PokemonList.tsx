@@ -20,8 +20,6 @@ const PokemonList = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
 
-  const isRowLoaded = ({ index }: { index: number }) => true;
-
   const rowRenderer = ({ index }: { index: number }) => {
     return (
       <div >
@@ -76,7 +74,7 @@ const PokemonList = () => {
     <div className="container">
       <List
         rowRenderer={rowRenderer}
-        rowCount={pokemons.length}
+        rowCount={(function() { return pokemons.length as number; })()}
         rowHeight={40}
         height={listHeight}
         width={800}
