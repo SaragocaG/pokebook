@@ -8,7 +8,7 @@
   - Recharts
   - React Virtualized
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was deployed using Vercel. [Link](https://pokebook-self.vercel.app/).
 
 ## Available Scripts
 
