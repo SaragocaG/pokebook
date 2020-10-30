@@ -1,0 +1,22 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(359deg);
+  }
+}
+
+.container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.loader {
+  animation: spin 500ms linear 0ms infinite;
+  height: 40px
+}
