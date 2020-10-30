@@ -1,0 +1,165 @@
+.container {
+  display: flex;
+  width: 100%;
+  margin: 10px;
+  max-width: 900px;
+}
+
+.row {
+  @extend .container;
+  flex-direction: row;
+  &.vleft {
+    align-items: flex-start;
+  }
+  &.vright {
+    align-items: flex-end;
+  }
+  &.vcenter {
+    align-items: center;
+  }
+  &.hcenter {
+    justify-content: center;
+  }
+  &.hleft {
+    justify-content: flex-start;
+  }
+  &.hright {
+    justify-content: flex-end;
+  }
+  &.hevenly {
+    justify-content: space-evenly;
+  }
+  &.hbetween {
+    justify-content: space-between;
+  }
+}
+
+.col {
+  @extend .container;
+  flex-direction: column;
+  &.hcenter {
+    align-items: center;
+  }
+  &.htop {
+    align-items: flex-start;
+  }
+  &.hbottom {
+    align-items: flex-end;
+  }
+  &.vcenter {
+    justify-content: center;
+  }
+  &.vleft {
+    justify-content: flex-start;
+  }
+  &.vright {
+    justify-content: flex-end;
+  }
+  &.vevenly {
+    justify-content: space-evenly;
+  }
+  &.vbetween {
+    justify-content: space-between;
+  }
+}
+
+@media all and (min-width: 450px) {
+  .sm-1 {
+    width: calc(10% - 20px);
+  }
+  .sm-2 {
+    width: calc(20% - 20px);
+  }
+  .sm-3 {
+    width: calc(30% - 20px);
+  }
+  .sm-4 {
+    width: calc(40% - 20px);
+  }
+  .sm-5 {
+    width: calc(50% - 20px);
+  }
+  .sm-6 {
+    width: calc(60% - 20px);
+  }
+  .sm-7 {
+    width: calc(70% - 20px);
+  }
+  .sm-8 {
+    width: calc(80% - 20px);
+  }
+  .sm-9 {
+    width: calc(90% - 20px);
+  }
+  .sm-10 {
+    width: calc(100% - 20px);
+  }
+}
+
+
+@media all and (min-width: 768px) {
+  .md-1 {
+    width: calc(10% - 20px);
+  }
+  .md-2 {
+    width: calc(20% - 20px);
+  }
+  .md-3 {
+    width: calc(30% - 20px);
+  }
+  .md-4 {
+    width: calc(40% - 20px);
+  }
+  .md-5 {
+    width: calc(50% - 20px);
+  }
+  .md-6 {
+    width: calc(60% - 20px);
+  }
+  .md-7 {
+    width: calc(70% - 20px);
+  }
+  .md-8 {
+    width: calc(80% - 20px);
+  }
+  .md-9 {
+    width: calc(90% - 20px);
+  }
+  .md-10 {
+    width: calc(100% - 20px);
+  }
+}
+
+
+@media all and (min-width: 1024px) {
+  .lg-1 {
+    width: calc(10% - 20px);
+  }
+  .lg-2 {
+    width: calc(20% - 20px);
+  }
+  .lg-3 {
+    width: calc(30% - 20px);
+  }
+  .lg-4 {
+    width: calc(40% - 20px);
+  }
+  .lg-5 {
+    width: calc(50% - 20px);
+  }
+  .lg-6 {
+    width: calc(60% - 20px);
+  }
+  .lg-7 {
+    width: calc(70% - 20px);
+  }
+  .lg-8 {
+    width: calc(80% - 20px);
+  }
+  .lg-9 {
+    width: calc(90% - 20px);
+  }
+  .lg-10 {
+    width: calc(100% - 20px);
+  }
+}
