@@ -1,15 +1,15 @@
-import { createStore, combineReducers } from 'redux';
-import darkModeReducer from './reducers/darkMode';
-import pokemonsReducer from './reducers/pokemons';
+import { createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import reducers from './reducers';
 
-const reducers = combineReducers({
-  darkMode: darkModeReducer,
-  pokemons: pokemonsReducer,
-});
+const persistConfig = {
+  key: 'root',
+  storage,
+};
 
-const storeConfig = () => createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+const persistedReducer = persistReducer(persistConfig, reducers);
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
 
-export default storeConfig;
+export { store, persistor };
