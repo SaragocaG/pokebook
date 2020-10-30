@@ -6,10 +6,10 @@ const api = axios.create({
 
 
 const pokeapi = {
-  getPokemons: async (page: number) => (
+  getPokemons: async (offset: number) => (
     new Promise((resolve, reject) => {
       const limit = 20;
-      api.get(`/pokemon/?offset=${(page - 1) * limit}&limit=${limit}`)
+      api.get(`/pokemon/?offset=${offset}&limit=${limit}`)
         .then((res) => {
           resolve(res.data);
         })

@@ -32,3 +32,7 @@ export interface TypeSpecie {
   }
 }
 
+export interface PokemonListProps {
+  list: TypePokemon[];
+  count: number;
+}

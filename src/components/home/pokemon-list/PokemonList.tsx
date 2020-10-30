@@ -1,9 +1,11 @@
 import { List } from 'react-virtualized';
-import React, { useState, useEffect } from 'react';
-import { TypePokemon } from '../../../types/types';
-import pokeapi from '../../../services/pokeapi';
+import React, { useEffect, useState } from 'react';
+import { PokemonListProps } from '../../../types/types';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './PokemonList.module.scss';
+import { addPokemons, setPokemonsCount } from '../../../store/actions/pokemons';
+import pokeapi from '../../../services/pokeapi';
 
 interface OnScrollParameters {
   clientHeight: number;
@@ -15,71 +17,75 @@ interface OnScrollParameters {
 }
 
 const PokemonList = () => {
-  const [pokemons, setPokemons] = useState([] as TypePokemon[]);
+  const dispatch = useDispatch();
+  const pokemons: PokemonListProps = useSelector((state: any) => state.pokemons);
   const [isLoading, setIsLoading] = useState(false);
-  const [total, setTotal] = useState(0);
-  const [page, setPage] = useState(1);
+  const listHeight = 400;
 
   const rowRenderer = ({ index , style }: { index: number, style: any }) => {
     return (
-      <Link key={pokemons[index].id} to={`/single-pokemon/${pokemons[index].name}`}>
+      <Link key={pokemons.list[index].id} to={`/single-pokemon/${pokemons.list[index].name}`}>
         <div
           style={style}
           className={styles.listItem}
-          key={pokemons[index].id}
+          key={pokemons.list[index].id}
         >
-          {pokemons[index].name}
+          {pokemons.list[index].name}
         </div>
       </Link>
     );
   };
 
-  const listHeight = 400;
-  
   const fetchMore = () => new Promise ((resolve, reject) => {
-    if (!isLoading) {
-      setIsLoading(true);
-      pokeapi.getPokemons(page)
-        .then((data: any) => {
-          setPokemons([
-            ...pokemons,
-            ...data.results,
-          ]);
-          setTotal(data.count);
-          setPage(page + 1);
-          resolve(true);
-        })
-        .catch((err) => {
-          console.log(err);
-          reject(false);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
+    pokeapi.getPokemons(pokemons.list.length)
+      .then((data: any) => {
+        dispatch(addPokemons(data.results));
+        dispatch(setPokemonsCount(data.count));
+        resolve(true);
+      })
+      .catch((err) => {
+        reject(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+    resolve(true);
   });
 
   useEffect(() => {
+    console.log('iniciou');
     fetchMore();
-  }, []);
+  }, [useSelector]);
 
   const onScroll = ({scrollHeight, scrollTop }: OnScrollParameters) => {
-    if ((scrollHeight - listHeight - scrollTop) <= 0.1 * scrollHeight && pokemons.length < total) {
-      fetchMore();
+    if (
+      (scrollHeight - listHeight - scrollTop <= 0.1 * scrollHeight)
+      && (pokemons.list.length < pokemons.count)
+      && !isLoading
+    ) {
+      setIsLoading(true);
+      fetchMore()
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   };
 
   return (
     <div className="container">
-      <List
-        rowCount={pokemons.length}
-        rowRenderer={rowRenderer}
-        overscanRowCount={10}
-        onScroll={onScroll}
-        height={listHeight}
-        rowHeight={50}
-        width={800}
-      />
+      {
+        pokemons.list.length > 0 && (
+          <List
+            rowCount={pokemons.list.length}
+            rowRenderer={rowRenderer}
+            overscanRowCount={0}
+            onScroll={onScroll}
+            height={listHeight}
+            rowHeight={50}
+            width={800}
+          />
+        )
+      }
     </div>
   );
 };
