@@ -1,7 +1,8 @@
 import React from 'react';
+import AppRouter from './AppRouter';
 
 const App = () => (
-  <>Hello World</>
+  <AppRouter />
 );
 
 export default App;
