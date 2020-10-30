@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Getting Started with Pokebook - CRA Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Built using
+  - Typescript
+  - REST API'integration
+  - Redux
+  - SCSS
+  - Recharts
+  - React Virtualized
+
+This project was deployed using Vercel. [Link](https://pokebook-self.vercel.app/).
 
 ## Available Scripts
 
