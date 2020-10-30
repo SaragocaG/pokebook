@@ -79,7 +79,7 @@ const PokemonList = () => {
           <List
             rowCount={pokemons.list.length}
             rowRenderer={rowRenderer}
-            overscanRowCount={0}
+            overscanRowCount={3}
             onScroll={onScroll}
             height={listHeight}
             rowHeight={50}
