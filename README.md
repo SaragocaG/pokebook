@@ -2,7 +2,7 @@
 
 ## Built using
   - Typescript
-  - REST API'integration
+  - REST API integration
   - Redux
   - SCSS
   - Recharts
