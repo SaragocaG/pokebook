@@ -1,13 +1,17 @@
-.container {
+.flex {
   display: flex;
   width: 100%;
   margin: 10px;
-  max-width: 900px;
   flex-wrap: wrap;
 }
 
+.container {
+  @extend .flex;
+  max-width: 900px;
+}
+
 .row {
-  @extend .container;
+  @extend .flex;
   flex-direction: row;
   &.vleft {
     align-items: flex-start;
@@ -36,7 +40,7 @@
 }
 
 .col {
-  @extend .container;
+  @extend .flex;
   flex-direction: column;
   &.hcenter {
     align-items: center;
