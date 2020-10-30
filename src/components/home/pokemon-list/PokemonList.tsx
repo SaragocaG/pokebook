@@ -20,18 +20,17 @@ const PokemonList = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
 
-  const rowRenderer = ({ index }: { index: number }) => {
+  const rowRenderer = ({ index , style }: { index: number, style: any }) => {
     return (
-      <div >
-        <Link key={pokemons[index].id} to={`/single-pokemon/${pokemons[index].name}`}>
-          <div
-            className={styles.listItem}
-            key={pokemons[index].id}
-          >
-            {pokemons[index].name}
-          </div>
-        </Link>
-      </div>
+      <Link key={pokemons[index].id} to={`/single-pokemon/${pokemons[index].name}`}>
+        <div
+          style={style}
+          className={styles.listItem}
+          key={pokemons[index].id}
+        >
+          {pokemons[index].name}
+        </div>
+      </Link>
     );
   };
 
@@ -73,13 +72,13 @@ const PokemonList = () => {
   return (
     <div className="container">
       <List
+        rowCount={pokemons.length}
         rowRenderer={rowRenderer}
-        rowCount={(function() { return pokemons.length as number; })()}
-        rowHeight={40}
-        height={listHeight}
-        width={800}
         overscanRowCount={10}
         onScroll={onScroll}
+        height={listHeight}
+        rowHeight={50}
+        width={800}
       />
     </div>
   );
