@@ -1,0 +1,21 @@
+
+.responsive-table {
+  overflow-x: auto;
+}
+
+
+.table {
+  width: 100%;
+  td, th {
+    padding: 5px;
+  }
+  th{
+    background-color: rgba(177, 177, 177, 0.767);
+  }
+  td {
+    text-align: left;
+  }
+  tr:nth-child(even) {
+    background-color: rgba(201, 201, 201, 0.767);
+  }
+}
