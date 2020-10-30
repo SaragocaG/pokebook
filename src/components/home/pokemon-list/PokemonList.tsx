@@ -36,6 +36,8 @@ const PokemonList = () => {
       </div>
     );
   };
+
+  const listHeight = 400;
   
   const fetchMore = () => new Promise ((resolve, reject) => {
     if (!isLoading) {
@@ -65,7 +67,7 @@ const PokemonList = () => {
   }, []);
 
   const onScroll = ({scrollHeight, scrollTop }: OnScrollParameters) => {
-    if (scrollHeight - scrollTop <= 0.1 * scrollHeight && pokemons.length < total) {
+    if ((scrollHeight - listHeight - scrollTop) <= 0.1 * scrollHeight && pokemons.length < total) {
       fetchMore();
     }
   };
@@ -76,7 +78,7 @@ const PokemonList = () => {
         rowRenderer={rowRenderer}
         rowCount={pokemons.length}
         rowHeight={40}
-        height={400}
+        height={listHeight}
         width={800}
         overscanRowCount={10}
         onScroll={onScroll}
