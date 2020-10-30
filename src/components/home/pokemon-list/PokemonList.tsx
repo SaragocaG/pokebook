@@ -65,7 +65,7 @@ const PokemonList = () => {
   }, []);
 
   const onScroll = ({scrollHeight, scrollTop }: OnScrollParameters) => {
-    if (scrollHeight - scrollTop <= 0.1 * scrollHeight) {
+    if (scrollHeight - scrollTop <= 0.1 * scrollHeight && pokemons.length < total) {
       fetchMore();
     }
   };
