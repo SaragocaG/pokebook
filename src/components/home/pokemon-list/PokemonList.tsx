@@ -1,4 +1,4 @@
-import { List, InfiniteLoader } from 'react-virtualized';
+import { List } from 'react-virtualized';
 import React, { useState, useEffect } from 'react';
 import { TypePokemon } from '../../../types/types';
 import pokeapi from '../../../services/pokeapi';
