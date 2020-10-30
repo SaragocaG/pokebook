@@ -1,4 +1,4 @@
-export interface Pokemon {
+export interface TypePokemon {
   id: number;
   name: string;
   height: number;
@@ -6,14 +6,25 @@ export interface Pokemon {
   specie: string;
   picture: string;
   base_experience: number;
+  abilities: TypeAbility[];
+  stats: TypeStats[];
 }
 
-export interface Ability {
-  id: number;
+export interface TypeAbility {
+  url: string;
   name: string;
 }
 
-export interface Specie {
+export interface TypeStats {
+  base_stat: number;
+  effort: number;
+  stat: {
+    name: string;
+    url: string
+  }
+}
+
+export interface TypeSpecie {
   id: number;
   name: string;
   color: {
