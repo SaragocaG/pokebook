@@ -1,5 +1,5 @@
-$secondary: #3236ac;
-$primary: #4e4de0;
+$secondary: #8884d8;
+$primary: #6e6baf;
 
 .screen {
   height: 100vh;
@@ -17,6 +17,7 @@ $primary: #4e4de0;
 }
 
 .header {
+  z-index: 99;
   width: 100%;
   height: 60px;
   background-color: $secondary;
@@ -40,6 +41,8 @@ $primary: #4e4de0;
   justify-content: center;
   height: calc(100vh - 80px);
   align-items: flex-start;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .footer {
